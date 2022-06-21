@@ -9,9 +9,15 @@
 #import "TimelineViewController.h"
 #import "APIManager.h"
 #import "AppDelegate.h"
+#import "TweetCell.h"
+#import "UIImageView+AFNetworking.h"
 #import "LoginViewController.h"
 
-@interface TimelineViewController ()
+@interface TimelineViewController ()<UITableViewDataSource>
+
+@property (nonatomic, strong) NSMutableArray *arrayOfTweets;
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
@@ -19,15 +25,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
+    self.tableView.dataSource = self;
+
     // Get timeline
     [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
         if (tweets) {
             NSLog(@"😎😎😎 Successfully loaded home timeline");
-            for (NSDictionary *dictionary in tweets) {
-                NSString *text = dictionary[@"text"];
+            for (Tweet *tweet in tweets) {
+                NSString *text = tweet.text;
                 NSLog(@"%@", text);
             }
+            self.arrayOfTweets = (NSMutableArray *) tweets;
+
+            [self.tableView reloadData]; 
         } else {
             NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
         }
@@ -62,5 +73,30 @@
 }
 */
 
+
+- (UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    Tweet *tweet = self.arrayOfTweets[indexPath.row];
+    TweetCell *cell = [tableView dequeueReusableCellWithIdentifier:@"tweetCell" forIndexPath:indexPath];
+    
+    cell.tweetText.text = tweet.text;
+    cell.authorNameLabel.text = tweet.user.name;
+    cell.numberOfLikes.text = [@(tweet.favoriteCount) stringValue];
+    cell.numberOfRetweets.text = [@(tweet.retweetCount) stringValue];
+    cell.tweet = tweet;
+    
+    NSString *URLString = tweet.user.profilePicture;
+    NSURL *url = [NSURL URLWithString:URLString];
+    [cell.profileImage setImageWithURL:url];
+
+    NSString *authorTagAndDateString = [[[@"@" stringByAppendingString:tweet.user.screenName] stringByAppendingString:@" - "] stringByAppendingString:tweet.createdAtString];
+    cell.authorTagAndDate.text = authorTagAndDateString;
+    
+    return cell;
+}
+
+- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.arrayOfTweets.count;
+}
 
 @end
