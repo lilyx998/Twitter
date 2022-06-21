@@ -123,6 +123,8 @@
 		6AD278F820BCBC140085BC29 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				D8E7AFB52862371D001CE956 /* TweetCell.h */,
+				D8E7AFB62862371D001CE956 /* TweetCell.m */,
 				D8E7AFAF2861347C001CE956 /* User.h */,
 				D8E7AFB02861347C001CE956 /* User.m */,
 				D8E7AFB2286174E4001CE956 /* Tweet.h */,
@@ -145,8 +147,6 @@
 				6AD2790520BCC0380085BC29 /* LoginViewController.m */,
 				6AD2790720BCC04D0085BC29 /* TimelineViewController.h */,
 				6AD2790820BCC04D0085BC29 /* TimelineViewController.m */,
-				D8E7AFB52862371D001CE956 /* TweetCell.h */,
-				D8E7AFB62862371D001CE956 /* TweetCell.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
