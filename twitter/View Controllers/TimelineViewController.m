@@ -10,7 +10,6 @@
 #import "APIManager.h"
 #import "AppDelegate.h"
 #import "TweetCell.h"
-#import "UIImageView+AFNetworking.h"
 #import "LoginViewController.h"
 #import "ComposeViewController.h"
 
@@ -98,23 +97,11 @@
 
 
 - (UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     Tweet *tweet = self.arrayOfTweets[indexPath.row];
+    
     TweetCell *cell = [tableView dequeueReusableCellWithIdentifier:@"tweetCell" forIndexPath:indexPath];
-    
-    cell.tweetText.text = tweet.text;
-    cell.authorNameLabel.text = tweet.user.name;
-    cell.numberOfLikes.text = [@(tweet.favoriteCount) stringValue];
-    cell.numberOfRetweets.text = [@(tweet.retweetCount) stringValue];
     cell.tweet = tweet;
-    
-    NSString *URLString = tweet.user.profilePicture;
-    URLString = [URLString stringByReplacingOccurrencesOfString:@"_normal" withString:@""];
-    NSURL *url = [NSURL URLWithString:URLString];
-    [cell.profileImage setImageWithURL:url];
-
-    NSString *authorTagAndDateString = [[[@"@" stringByAppendingString:tweet.user.screenName] stringByAppendingString:@" - "] stringByAppendingString:tweet.createdAtString];
-    cell.authorTagAndDate.text = authorTagAndDateString;
+    [cell refreshCell];
     
     return cell;
 }
@@ -123,15 +110,11 @@
     return self.arrayOfTweets.count;
 }
 
-//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-//    UINavigationController *navigationController = [segue destinationViewController];
-//    ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
-//    composeController.delegate = self;
-//}
-
 - (void)didTweet:(nonnull Tweet *)tweet {
     [self.arrayOfTweets insertObject:tweet atIndex:0];
     [self.tableView reloadData];
 }
+
+
 
 @end
