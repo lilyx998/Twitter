@@ -109,6 +109,7 @@
     cell.tweet = tweet;
     
     NSString *URLString = tweet.user.profilePicture;
+    URLString = [URLString stringByReplacingOccurrencesOfString:@"_normal" withString:@""];
     NSURL *url = [NSURL URLWithString:URLString];
     [cell.profileImage setImageWithURL:url];
 
