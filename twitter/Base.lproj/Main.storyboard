@@ -182,9 +182,14 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Home Timeline" id="MOc-fV-EZE">
-                        <barButtonItem key="rightBarButtonItem" title="Log Out" id="uzt-k0-zP2">
+                        <barButtonItem key="leftBarButtonItem" title="Log Out" id="uzt-k0-zP2">
                             <connections>
                                 <action selector="didTapLogout:" destination="Lbl-k5-U4i" id="HG1-ZM-tTq"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="edit-icon" id="MK0-kn-aly">
+                            <connections>
+                                <segue destination="QjO-GJ-cPq" kind="presentation" id="cfn-NB-5AD"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -214,12 +219,80 @@
             </objects>
             <point key="canvasLocation" x="860" y="36.431784107946029"/>
         </scene>
+        <!--Compose View Controller-->
+        <scene sceneID="PYb-tc-Vge">
+            <objects>
+                <viewController id="Qc3-GA-Cq3" customClass="ComposeViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DLn-lw-7sT">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="1Y6-Pk-5Xc">
+                                <rect key="frame" x="20" y="76" width="335" height="551"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Kg7-pv-jBz"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Kg7-pv-jBz" firstAttribute="bottom" secondItem="1Y6-Pk-5Xc" secondAttribute="bottom" constant="20" id="0ZS-NE-KhP"/>
+                            <constraint firstItem="1Y6-Pk-5Xc" firstAttribute="leading" secondItem="Kg7-pv-jBz" secondAttribute="leading" constant="20" id="QMH-P3-RpM"/>
+                            <constraint firstItem="1Y6-Pk-5Xc" firstAttribute="top" secondItem="Kg7-pv-jBz" secondAttribute="top" constant="20" id="SQd-Qs-VVE"/>
+                            <constraint firstItem="Kg7-pv-jBz" firstAttribute="trailing" secondItem="1Y6-Pk-5Xc" secondAttribute="trailing" constant="20" id="rEZ-Ww-iB2"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="esE-Ov-4T6">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="close-icon" id="t2z-SX-uKR">
+                            <connections>
+                                <action selector="closeAction:" destination="Qc3-GA-Cq3" id="DuE-Y8-Tcq"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Tweet" id="Mcn-oU-9ED">
+                            <connections>
+                                <action selector="tweetAction:" destination="Qc3-GA-Cq3" id="AeR-rY-nGZ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="textView" destination="1Y6-Pk-5Xc" id="hWB-JI-AAJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qVA-h8-JfM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2740" y="805.54722638680664"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="G94-m0-ZkB">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QjO-GJ-cPq" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="cnr-ZB-aWW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Qc3-GA-Cq3" kind="relationship" relationship="rootViewController" id="tTi-R2-jK6"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ny5-5Q-OcJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2006" y="807"/>
+        </scene>
     </scenes>
     <resources>
         <image name="TwitterLogoBlue" width="200" height="200"/>
+        <image name="close-icon" width="26" height="24"/>
+        <image name="edit-icon" width="30" height="27"/>
         <image name="favor-icon" width="30" height="30"/>
         <image name="message-icon" width="30" height="30"/>
         <image name="retweet-icon" width="30" height="30"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
