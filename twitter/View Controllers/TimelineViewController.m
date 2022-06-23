@@ -34,6 +34,10 @@
     self.tableView.dataSource = self;
 
     // Get timeline
+    [self getTimeline]; 
+}
+
+- (void) getTimeline{
     [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
         if (tweets) {
             NSLog(@"😎😎😎 Successfully loaded home timeline");
@@ -43,9 +47,29 @@
             }
             self.arrayOfTweets = (NSMutableArray *) tweets;
 
-            [self.tableView reloadData]; 
+            [self.tableView reloadData];
         } else {
             NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
+        }
+    }];
+}
+
+- (void) getMoreTimeline{
+    Tweet* lastTweet = self.arrayOfTweets[self.arrayOfTweets.count-1];
+    [[APIManager shared] getMoreHomeTimelineWithCompletion:(lastTweet.idStr)
+                                            completion:^(NSArray *tweets, NSError *error) {
+        if (tweets) {
+            NSLog(@"🅿️🅿️🅿️ Successfully loaded MORE home timeline");
+            for (Tweet *tweet in tweets) {
+                NSString *text = tweet.text;
+                NSLog(@"%@", text);
+            }
+            [self.arrayOfTweets removeLastObject];
+            [self.arrayOfTweets addObjectsFromArray: tweets];
+
+            [self.tableView reloadData];
+        } else {
+            NSLog(@"🤬🤬🤬 Error getting MORE home timeline: %@", error.localizedDescription);
         }
     }];
 }
@@ -59,8 +83,6 @@
                 NSLog(@"%@", text);
             }
             self.arrayOfTweets = (NSMutableArray *) tweets;
-
-            [self.tableView reloadData];
         } else {
             NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
         }
@@ -110,6 +132,11 @@
 
 
 - (UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if(indexPath.row == self.arrayOfTweets.count-1){
+        // ADD MORE FOR ENDLESS SCROLL
+        [self getMoreTimeline];
+        [self.tableView reloadData]; 
+    }
     Tweet *tweet = self.arrayOfTweets[indexPath.row];
     
     TweetCell *cell = [tableView dequeueReusableCellWithIdentifier:@"tweetCell" forIndexPath:indexPath];
