@@ -49,9 +49,12 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+Login: 
+![twitter login](https://user-images.githubusercontent.com/34987475/175425324-3da50892-5a1a-4cea-8cd3-411ca8c13605.gif)
 
-GIF created with [Kap](https://getkap.co/).
+Other Required Features:
+![twitter other required features](https://user-images.githubusercontent.com/34987475/175425344-1162f0a3-ae0d-4d9b-9e98-f466cad71aab.gif)
+
 
 ## Notes
 
