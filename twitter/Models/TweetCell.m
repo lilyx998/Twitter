@@ -9,6 +9,7 @@
 #import "TweetCell.h"
 #import "APIManager.h"
 #import "UIImageView+AFNetworking.h"
+#import "DateTools.h"
 
 @implementation TweetCell
 
@@ -35,6 +36,8 @@
     NSURL *url = [NSURL URLWithString:URLString];
     [self.profileImage setImageWithURL:url];
 
+    NSString *date = self.tweet.createdAtString;
+    
     NSString *authorTagAndDateString = [[[@"@" stringByAppendingString:self.tweet.user.screenName] stringByAppendingString:@" - "] stringByAppendingString:self.tweet.createdAtString];
     self.authorTagAndDate.text = authorTagAndDateString;
     
