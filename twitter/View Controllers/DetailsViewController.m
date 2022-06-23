@@ -16,7 +16,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *tagLabel;
-@property (weak, nonatomic) IBOutlet UILabel *tweetTextLabel;
+@property (weak, nonatomic) IBOutlet UITextView *tweetText;
 @property (weak, nonatomic) IBOutlet UILabel *timeAndDateLabel;
 @property (weak, nonatomic) IBOutlet UIButton *retweetButton;
 @property (weak, nonatomic) IBOutlet UILabel *retweetCountLabel; 
@@ -37,7 +37,7 @@
     
     self.nameLabel.text = self.tweet.user.name;
     self.tagLabel.text = [@"@" stringByAppendingString: self.tweet.user.screenName];
-    self.tweetTextLabel.text = self.tweet.text;
+    self.tweetText.text = self.tweet.text;
     
     [self refreshLikeAndRetweet];
     

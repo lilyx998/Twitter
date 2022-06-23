@@ -22,9 +22,19 @@
     [super setSelected:selected animated:animated];
     // Configure the view for the selected state
 }
+//
+//- (void) updateTextView{
+//    NSString *linkString = self.tweetText 
+//    NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:@"Google"
+//                                                                           attributes:@{ NSLinkAttributeName: [NSURL URLWithString:@"http://www.google.com"] }];
+//    self.tweetText.attributedText = attributedString;
+//}
 
 - (void)refreshCell{
+//    [self.tweetText setText:self.tweet.text];
     self.tweetText.text = self.tweet.text;
+//    [self updateTextView];
+//    NSLog(<#NSString * _Nonnull format, ...#>)
     self.authorNameLabel.text = self.tweet.user.name;
     
     self.numberOfLikes.text = [@(self.tweet.favoriteCount) stringValue];
