@@ -35,10 +35,8 @@
     URLString = [URLString stringByReplacingOccurrencesOfString:@"_normal" withString:@""];
     NSURL *url = [NSURL URLWithString:URLString];
     [self.profileImage setImageWithURL:url];
-
-    NSString *date = self.tweet.createdAtString;
     
-    NSString *authorTagAndDateString = [[[@"@" stringByAppendingString:self.tweet.user.screenName] stringByAppendingString:@" - "] stringByAppendingString:self.tweet.createdAtString];
+    NSString *authorTagAndDateString = [[[@"@" stringByAppendingString:self.tweet.user.screenName] stringByAppendingString:@" - "] stringByAppendingString:self.tweet.createdAgoString];
     self.authorTagAndDate.text = authorTagAndDateString;
     
     if(self.tweet.favorited)

@@ -54,13 +54,12 @@
         // Convert String to Date
         NSDate *date = [formatter dateFromString:createdAtOriginalString];
         
-//        NSLog(@"😶‍🌫️%@", date.shortTimeAgoSinceNow);
-//        // Configure output format
-//        formatter.dateStyle = NSDateFormatterShortStyle;
-//        formatter.timeStyle = NSDateFormatterNoStyle;
-//        // Convert Date to String
-//        self.createdAtString = [formatter stringFromDate:date];
-        self.createdAtString = date.shortTimeAgoSinceNow; 
+        formatter.dateStyle = NSDateFormatterMediumStyle;
+        formatter.timeStyle = NSDateFormatterShortStyle;
+        
+        self.dateAndTime = [formatter stringFromDate:date];
+        
+        self.createdAgoString = date.shortTimeAgoSinceNow; 
     }
     return self;
 }
