@@ -53,7 +53,7 @@ Login:
 ![twitter login](https://user-images.githubusercontent.com/34987475/175425324-3da50892-5a1a-4cea-8cd3-411ca8c13605.gif)
 
 Other Required Features:
-![twitter other required features](https://user-images.githubusercontent.com/34987475/175425344-1162f0a3-ae0d-4d9b-9e98-f466cad71aab.gif)
+![twitter other required features](https://user-images.githubusercontent.com/34987475/175427661-110bdc56-8740-4495-a03d-b3d3ac47faf2.gif)
 
 
 ## Notes
