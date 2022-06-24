@@ -9,8 +9,9 @@
 #import "ComposeViewController.h"
 #import "APIManager.h"
 
-@interface ComposeViewController ()
+@interface ComposeViewController () <UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *textView;
+@property (weak, nonatomic) IBOutlet UILabel *charactersRemainingLabel;
 
 @end
 
@@ -18,6 +19,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.textView.delegate = self;
     // Do any additional setup after loading the view.
 }
 
@@ -36,6 +38,22 @@
 
 - (IBAction)closeAction:(id)sender {
     [self dismissViewControllerAnimated:true completion:nil];
+}
+
+// shouldChangeTextInRange is called every
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+    int characterLimit = 280;
+    NSString *newText = [textView.text stringByReplacingCharactersInRange:range withString:text];
+    
+    if(newText.length <= characterLimit){
+        NSInteger remaining = 280 - newText.length;
+        self.charactersRemainingLabel.text = [@(remaining) stringValue];
+        [self.charactersRemainingLabel setTextColor:[UIColor colorWithDisplayP3Red:0 green:0.5 blue:0.194 alpha:100]];
+        if(remaining == 0)
+           [self.charactersRemainingLabel setTextColor:[UIColor redColor]];
+    }
+    
+    return newText.length <= characterLimit;
 }
 
 /*

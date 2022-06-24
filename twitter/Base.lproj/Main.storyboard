@@ -234,21 +234,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="1Y6-Pk-5Xc">
-                                <rect key="frame" x="20" y="76" width="335" height="551"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="1Y6-Pk-5Xc">
+                                <rect key="frame" x="20" y="56" width="335" height="216.5"/>
+                                <color key="backgroundColor" red="0.94529236469072164" green="0.94529236469072164" blue="0.94529236469072164" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="280" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TrA-ZT-ZQe">
+                                <rect key="frame" x="324" y="292.5" width="31" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.5" blue="0.19396577355895994" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Kg7-pv-jBz"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Kg7-pv-jBz" firstAttribute="bottom" secondItem="1Y6-Pk-5Xc" secondAttribute="bottom" constant="20" id="0ZS-NE-KhP"/>
-                            <constraint firstItem="1Y6-Pk-5Xc" firstAttribute="leading" secondItem="Kg7-pv-jBz" secondAttribute="leading" constant="20" id="QMH-P3-RpM"/>
-                            <constraint firstItem="1Y6-Pk-5Xc" firstAttribute="top" secondItem="Kg7-pv-jBz" secondAttribute="top" constant="20" id="SQd-Qs-VVE"/>
-                            <constraint firstItem="Kg7-pv-jBz" firstAttribute="trailing" secondItem="1Y6-Pk-5Xc" secondAttribute="trailing" constant="20" id="rEZ-Ww-iB2"/>
+                            <constraint firstItem="TrA-ZT-ZQe" firstAttribute="top" secondItem="1Y6-Pk-5Xc" secondAttribute="bottom" constant="20" id="0a0-1A-IFf"/>
+                            <constraint firstItem="Kg7-pv-jBz" firstAttribute="bottom" secondItem="TrA-ZT-ZQe" secondAttribute="bottom" multiplier="2:1" constant="20" id="4Zd-ye-j4k"/>
+                            <constraint firstItem="TrA-ZT-ZQe" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Kg7-pv-jBz" secondAttribute="leading" constant="20" id="ehe-hU-yCx"/>
+                            <constraint firstItem="Kg7-pv-jBz" firstAttribute="trailing" secondItem="TrA-ZT-ZQe" secondAttribute="trailing" constant="20" id="hSp-jz-PYt"/>
+                            <constraint firstItem="Kg7-pv-jBz" firstAttribute="trailing" secondItem="1Y6-Pk-5Xc" secondAttribute="trailing" constant="20" id="j0o-pk-NMx"/>
+                            <constraint firstItem="1Y6-Pk-5Xc" firstAttribute="leading" secondItem="Kg7-pv-jBz" secondAttribute="leading" constant="20" id="mHk-5f-vle"/>
+                            <constraint firstItem="1Y6-Pk-5Xc" firstAttribute="top" secondItem="Kg7-pv-jBz" secondAttribute="top" id="mYY-0h-LhK"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="esE-Ov-4T6">
@@ -264,6 +273,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="charactersRemainingLabel" destination="TrA-ZT-ZQe" id="pfs-3a-BO7"/>
                         <outlet property="textView" destination="1Y6-Pk-5Xc" id="hWB-JI-AAJ"/>
                     </connections>
                 </viewController>
