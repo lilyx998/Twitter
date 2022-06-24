@@ -50,9 +50,11 @@ Please list two areas of the assignment you'd like to **discuss further with you
 Here's a walkthrough of implemented user stories:
 
 Login: 
+
 ![twitter login](https://user-images.githubusercontent.com/34987475/175425324-3da50892-5a1a-4cea-8cd3-411ca8c13605.gif)
 
 Other Required Features:
+
 ![twitter other required features](https://user-images.githubusercontent.com/34987475/175427661-110bdc56-8740-4495-a03d-b3d3ac47faf2.gif)
 
 
