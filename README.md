@@ -42,7 +42,7 @@ The following **stretch** features are implemented:
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-1. Better ways to implement reply? I feel like my way was a bit messy, especially with the way I was passing information on the Tweet being replied, from the reply button to my compose Tweet screen. 
+1. Better ways to implement infinite scroll? What if loading takes a long time, and then you scroll up, then back down, and then it'll trigger another loading of Tweets? 
 2. With more time, I would have loved to display replies in details view. I wonder if it would be like retrieving the home timeline, and could infinite scroll be implemented the same way on the replies? 
 
 ## Video Walkthrough
@@ -66,7 +66,7 @@ Optional Features:
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+Recreating the basics of Twitter for this week 2 project, has helped to reinforce basic iOS programming concepts, such as UITableViews, outlets, API calls, segues, and custom classes. In addition, this project has introduced new concepts such as models and auto-layout, as well as other challenges encountered when implementing features like infinite scroll and replying to tweets. For this project, since it was more complicated, and I needed better ways to passing information between screens, I created custom delegate protocols to move information between my home timeline screen and my compose/reply screen. To implement infinite scroll, I would fetch more Tweets via an API call with specific parameters once I had scrolled down to the bottom, indicated by the loading of the last cell. I would add the new Tweets to my table and reload the table. 
 
 ## Credits
 
