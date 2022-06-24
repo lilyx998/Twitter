@@ -28,11 +28,11 @@ The following **stretch** features are implemented:
 - [x] Be able to **unlike** or **un-retweet** by tapping a liked or retweeted Tweet button, respectively. (Doing so will decrement the count for each)
 - [x] Click on links that appear in Tweets
 - [x] Load more tweets once they reach the bottom of the feed using infinite loading similar to the actual Twitter client
-- [ ] See embedded media in Tweets that contain images or videos
-- [ ] Reply to any Tweet (**2 points**)
+- [x] Reply to any Tweet (**2 points**) - only in home timeline
   - Replies should be prefixed with the username
   - The `reply_id` should be set when posting the tweet
-- [ ] See a character count when composing a Tweet (as well as a warning) (280 characters) (**1 point**)
+- [x] See a character count when composing a Tweet (as well as a warning) (280 characters) (**1 point**)
+- [ ] See embedded media in Tweets that contain images or videos
 - [ ] Click on a Profile image to reveal another user's profile page, including:
   - Header view: picture and tagline
   - Basic stats: #tweets, #following, #followers
@@ -42,8 +42,8 @@ The following **stretch** features are implemented:
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-1.
-2.
+1. Better ways to implement reply? I feel like my way was a bit messy, especially with the way I was passing information on the Tweet being replied, from the reply button to my compose Tweet screen. 
+2. With more time, I would have loved to display replies in details view. I wonder if it would be like retrieving the home timeline, and could infinite scroll be implemented the same way on the replies? 
 
 ## Video Walkthrough
 
@@ -56,6 +56,12 @@ Login:
 Other Required Features:
 
 ![twitter other required features](https://user-images.githubusercontent.com/34987475/175427661-110bdc56-8740-4495-a03d-b3d3ac47faf2.gif)
+
+Optional Features:
+
+![optional features twitter](https://user-images.githubusercontent.com/34987475/175696979-3c85ea1d-f701-4479-8107-80be1ab278d1.gif)
+
+
 
 
 ## Notes
