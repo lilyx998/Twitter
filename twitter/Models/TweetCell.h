@@ -14,8 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol TweetCellDelegate 
 
-- (void) didSomething;
-
+- (void)replyToTweet:(nonnull Tweet *)tweet;
 @end
 
 
@@ -33,7 +32,6 @@ NS_ASSUME_NONNULL_BEGIN
 //@property (weak, nonatomic) IBOutlet UIButton *replyButton; // TODO
 
 @property (strong, nonatomic) Tweet *tweet;
-@property (strong, nonatomic) TimelineViewController *timelineViewController;
 @property (nonatomic, weak) id<TweetCellDelegate> delegate;
 
 - (void) refreshCell; 

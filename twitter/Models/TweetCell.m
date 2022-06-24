@@ -107,7 +107,7 @@
 
 - (IBAction)didTapReply:(id)sender {
     // Get Tweet into timelineViewController??
-    self.timelineViewController.replyToTweet = self.tweet;
+    [self.delegate replyToTweet:self.tweet];
 }
 
 @end

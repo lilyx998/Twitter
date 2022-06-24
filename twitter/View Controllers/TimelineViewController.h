@@ -12,6 +12,5 @@
 @interface TimelineViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) Tweet* replyToTweet;
 
 @end

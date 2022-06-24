@@ -17,6 +17,7 @@
 @interface TimelineViewController ()<ComposeViewControllerDelegate, UITableViewDataSource, UITableViewDelegate, TweetCellDelegate>
 
 @property (nonatomic, strong) NSMutableArray *arrayOfTweets;
+@property (strong, nonatomic) Tweet* replyToTweet;
 
 //@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -126,8 +127,6 @@
         composeController.delegate = self;
         composeController.reply = YES;
         
-//        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-//        Tweet *replyingToTweet = self.arrayOfTweets[indexPath.row];
         composeController.replyingToID = self.replyToTweet.idStr;
         composeController.replyingToMention = self.replyToTweet.user.screenName;
     }
@@ -153,7 +152,7 @@
     
     TweetCell *cell = [tableView dequeueReusableCellWithIdentifier:@"tweetCell" forIndexPath:indexPath];
     cell.tweet = tweet;
-    cell.timelineViewController = self; 
+    cell.delegate = self;
     [cell refreshCell];
     
     return cell;
@@ -168,8 +167,8 @@
     [self.tableView reloadData];
 }
 
-- (void)didSomething{
-    
+- (void)replyToTweet:(nonnull Tweet *)tweet {
+    self.replyToTweet = tweet;
 }
 
 @end
