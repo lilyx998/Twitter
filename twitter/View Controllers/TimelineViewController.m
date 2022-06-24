@@ -14,7 +14,7 @@
 #import "ComposeViewController.h"
 #import "DetailsViewController.h"
 
-@interface TimelineViewController ()<ComposeViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface TimelineViewController ()<ComposeViewControllerDelegate, UITableViewDataSource, UITableViewDelegate, TweetCellDelegate>
 
 @property (nonatomic, strong) NSMutableArray *arrayOfTweets;
 
@@ -113,17 +113,29 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if([[segue identifier] isEqualToString:@"Compose Segue"]){
         NSLog(@"Compose ✏️");
-        // Get the new view controller using [segue destinationViewController].
         UINavigationController *navigationController = [segue destinationViewController];
-        // Pass the selected object to the new view controller.
         ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
         composeController.delegate = self;
+        composeController.reply = NO;
+    }
+    else if([[segue identifier] isEqualToString:@"Reply Segue"]){ // to make API call, we need text and id-replying-to
+        NSLog(@"Reply 🫦");
+        
+        UINavigationController *navigationController = [segue destinationViewController];
+        ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
+        composeController.delegate = self;
+        composeController.reply = YES;
+        
+//        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+//        Tweet *replyingToTweet = self.arrayOfTweets[indexPath.row];
+        composeController.replyingToID = self.replyToTweet.idStr;
+        composeController.replyingToMention = self.replyToTweet.user.screenName;
     }
     else{
         NSLog(@"Going into details view 🧐");
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        Tweet *tweetToPass = self.arrayOfTweets[indexPath.row];
         
-        Tweet *tweetToPass = self.arrayOfTweets[indexPath.row]; 
         DetailsViewController *detailsController = [segue destinationViewController];
         detailsController.tweet = tweetToPass;
         detailsController.delegate = self; 
@@ -141,6 +153,7 @@
     
     TweetCell *cell = [tableView dequeueReusableCellWithIdentifier:@"tweetCell" forIndexPath:indexPath];
     cell.tweet = tweet;
+    cell.timelineViewController = self; 
     [cell refreshCell];
     
     return cell;
@@ -153,6 +166,10 @@
 - (void)didTweet:(nonnull Tweet *)tweet {
     [self.arrayOfTweets insertObject:tweet atIndex:0];
     [self.tableView reloadData];
+}
+
+- (void)didSomething{
+    
 }
 
 @end

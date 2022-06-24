@@ -28,4 +28,6 @@
 
 - (void)unretweet:(Tweet *)tweet completion:(void (^)(Tweet *, NSError *))completion;
 
+- (void)replyTo:(NSString *)idStr withText:(NSString *)text completion:(void (^)(Tweet *, NSError *))completion;
+
 @end
